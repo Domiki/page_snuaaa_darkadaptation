@@ -65,8 +65,23 @@ main {
 .background-image {
   position: absolute;
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  animation: background-image-move 10s ease-in-out infinite;
+}
+
+@keyframes background-image-move {
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: translateX(5%) translateY(5%);
+  }
+  0% {
+    transform: translateX(0px) translateY(0px);
+  }
 }
 
 .background-wing {
@@ -74,6 +89,24 @@ main {
   width: 50%;
   right: 0;
   top: 0;
+  animation: scroll-ruler 5s linear infinite;
+}
+
+.background-wing2 {
+  position: absolute;
+  width: 50%;
+  right: 50%;
+  top: 0;
+  animation: scroll-ruler 5s linear infinite;
+}
+
+@keyframes scroll-ruler {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 .background-border {
@@ -114,6 +147,20 @@ main {
   width: 100%;
   height: 100%;
   background: white;
+  transform-origin: left;
+  animation: background-bargauge-fill 7s ease-in-out infinite;
+}
+
+@keyframes background-bargauge-fill {
+  0% {
+    transform: scaleX(10%);
+  }
+  50% {
+    transform: scaleX(90%);
+  }
+  100% {
+    transform: scaleX(10%);
+  }
 }
 
 .title-container {
@@ -172,6 +219,43 @@ main {
   position: absolute;
   top: 34%;
   right: 7%;
+  animation: text-flicker 6s ease-in-out infinite;
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  60% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 0.4;
+  }
+  64% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 0.4;
+  }
+  68% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .text-line-horizontal {
@@ -209,20 +293,49 @@ main {
 
 .circle-line {
   position: absolute;
-  bottom: 17%;
-  left: 5%;
-  width: 52%;
+  bottom: 18%;
+  left: 6%;
+  width: 45%;
   aspect-ratio: 1 / 1;
   border: 1px solid white;
   border-radius: 50%;
   background: none;
+  animation: circle-move 3s ease-in-out infinite;
+}
+
+@keyframes circle-move {
+  0% {
+    transform: scale(100%);
+  }
+  50% {
+    transform: scale(120%);
+  }
+  100% {
+    transform: scale(100%);
+  }
 }
 
 .circle-camera {
   position: relative;
-  top: 44%;
-  left: 30%;
-  width: 30%;
+  top: 63%;
+  left: 22%;
+  width: 14%;
+  animation: camera-move 4s ease-in-out infinite;
+}
+
+@keyframes camera-move {
+  0% {
+    transform: scale(100%);
+  }
+  80% {
+    transform: scale(100%);
+  }
+  90% {
+    transform: scale(130%);
+  }
+  100% {
+    transform: scale(100%);
+  }
 }
 
 .galaxy-container {
@@ -247,6 +360,16 @@ main {
 .galaxy-image {
   width: 60%;
   object-fit: cover;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /*** video ***/
