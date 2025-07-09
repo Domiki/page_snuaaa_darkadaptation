@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <div id="loading-screen">loading . . .</div>
     <main>
       <div class="poster-container">
         <div class="poster-shaper">
@@ -56,4 +57,17 @@
       <div class="footer-text">서울대학교 아마추어 천문회 AAA</div>
     </footer>
   </body>
+  <script>
+    Promise.all([
+      new Promise((resolve) => window.addEventListener("load", resolve)),
+      document.fonts.ready,
+    ]).then(() => {
+      const loader = document.getElementById("loading-screen");
+      loader.classList.add("fade-out");
+
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 1000);
+    });
+  </script>
 </html>
