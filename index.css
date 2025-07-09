@@ -8,7 +8,7 @@ main {
 .poster-container {
   flex-grow: 1;
   margin: 0 5vh;
-  height: 100%;
+  height: 90%;
 }
 
 .poster-main {
