@@ -219,6 +219,7 @@ main {
   position: absolute;
   top: 34%;
   right: 7%;
+  width: 10%;
   animation: text-flicker 6s ease-in-out infinite;
 }
 
