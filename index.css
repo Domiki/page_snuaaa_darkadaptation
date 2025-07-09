@@ -26,7 +26,7 @@ main {
 /*** poster ***/
 .poster-container {
   width: 100%;
-  margin: 0 5vh;
+  margin: 0 5%;
 }
 
 .poster-shaper {
@@ -82,6 +82,40 @@ main {
   height: 100%;
 }
 
+.background-flare1 {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  opacity: 0.7;
+}
+
+.background-flare2 {
+  position: absolute;
+  width: 50%;
+  right: -4%;
+  top: -5%;
+  opacity: 0.8;
+}
+
+.background-bar {
+  position: absolute;
+  right: 3%;
+  top: 29%;
+  width: 8%;
+  height: 0.7%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.background-bargauge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
 .title-container {
   position: absolute;
   top: 10%;
@@ -126,6 +160,45 @@ main {
   bottom: 66.5%;
 }
 
+.text-container {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text {
+  position: absolute;
+  top: 34%;
+  right: 7%;
+}
+
+.text-line-horizontal {
+  position: absolute;
+  top: 35%;
+  right: 17%;
+  width: 12%;
+  border: 1px dashed grey;
+  opacity: 0.7;
+}
+
+.text-line-vertical {
+  position: absolute;
+  top: 20%;
+  right: 29%;
+  bottom: 65%;
+  border: 1px dashed grey;
+  opacity: 0.7;
+}
+
+.text-plus-symbol {
+  position: absolute;
+  font-size: 20px;
+  right: calc(29% - 4px);
+  top: 17%;
+}
+
 .circle-container {
   position: absolute;
   top: 0%;
@@ -150,6 +223,30 @@ main {
   top: 44%;
   left: 30%;
   width: 30%;
+}
+
+.galaxy-container {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  width: 50%;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 12%;
+}
+
+.galaxy-item {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+}
+
+.galaxy-image {
+  width: 60%;
+  object-fit: cover;
 }
 
 /*** video ***/
@@ -215,11 +312,22 @@ footer {
 /*** links ***/
 .link-container {
   position: absolute;
-  right: 3vh;
-  top: 3vh;
+  right: 2vw;
+  top: 2vh;
+}
+
+.link-background {
+  position: absolute;
+  right: -2vw;
+  top: -2vh;
+  width: 50%;
+  height: 50%;
+  background: black;
+  box-shadow: 0 0 100px 100px rgba(0, 0, 0, 1);
 }
 
 .link-item {
+  position: relative;
   padding: 0.5em;
   font-size: 1.5em;
   font-weight: 700;
