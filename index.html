@@ -10,7 +10,7 @@
   <body>
     <main>
       <div class="poster-container">
-        <div class="poster-main">
+        <div class="poster-shaper">
           <div class="background-container">
             <div class="background-inner">
               <img class="background-image" src="imgs/background.png" />
@@ -32,13 +32,28 @@
           </div>
         </div>
       </div>
-      <div class="movie-container"></div>
-      <div class="footer">
-        <img class="logo_snuaaa" src="imgs/logo_snuaaa.png" />
-        <img class="logo_ica" src="imgs/logo_ica.png" />
-        <div class="footer-line dashed-line"></div>
-        <div class="footer-text">서울대학교 아마추어 천문회 AAA</div>
+      <div class="video-container">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class="video"
+          src="videos/main.mp4"
+        ></video>
+        <div class="video-fade"></div>
       </div>
     </main>
+    <section class="link-container">
+      <div class="link-item">Introduction</div>
+      <div class="link-item">Artists</div>
+      <div class="link-item">View</div>
+    </section>
+    <footer>
+      <img class="logo_snuaaa" src="imgs/logo_snuaaa.png" />
+      <img class="logo_ica" src="imgs/logo_ica.png" />
+      <div class="footer-line dashed-line"></div>
+      <div class="footer-text">서울대학교 아마추어 천문회 AAA</div>
+    </footer>
   </body>
 </html>

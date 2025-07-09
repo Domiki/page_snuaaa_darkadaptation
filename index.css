@@ -1,26 +1,25 @@
 main {
   display: flex;
-  width: 100%;
-  height: 100%;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 /*** poster ***/
 .poster-container {
-  flex-grow: 1;
+  width: 100%;
   margin: 0 5vh;
-  height: 90%;
 }
 
-.poster-main {
+.poster-shaper {
   position: relative;
   aspect-ratio: 1 / 1.414;
-  max-height: 100%;
+  max-height: 100vh;
 }
 
-/* main */
 .background-container {
   position: absolute;
-  top: 25%;
+  top: 20%;
   width: 100%;
   height: 60%;
 }
@@ -67,7 +66,7 @@ main {
 
 .title-container {
   position: absolute;
-  top: 15%;
+  top: 10%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -83,7 +82,7 @@ main {
   position: absolute;
   height: 35%;
   right: -5%;
-  bottom: 20%;
+  bottom: 25%;
 }
 
 .title-line-horizontal {
@@ -119,7 +118,7 @@ main {
 
 .circle-line {
   position: absolute;
-  bottom: 12%;
+  bottom: 17%;
   left: 5%;
   width: 52%;
   aspect-ratio: 1 / 1;
@@ -135,17 +134,41 @@ main {
   width: 30%;
 }
 
-/*** poster ***/
-.movie-conatiner {
-  flex-grow: 1;
+/*** video ***/
+.video-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: -1;
+}
+
+.video {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.video-fade {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  width: 100%;
+  height: 100%;
 }
 
 /*** footer ***/
-.footer {
+footer {
   position: absolute;
   bottom: 60px;
   width: 100%;
-  padding: 0 60px;
+  padding: 0 5%;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -167,5 +190,21 @@ main {
 }
 
 .footer-text {
+  text-align: right;
   font-size: 0.75em;
+}
+
+/*** links ***/
+.link-container {
+  position: absolute;
+  right: 3vh;
+  top: 3vh;
+}
+
+.link-item {
+  padding: 0.5em;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: right;
+  cursor: pointer;
 }
