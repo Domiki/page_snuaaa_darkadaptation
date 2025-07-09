@@ -61,6 +61,15 @@
     Promise.all([
       new Promise((resolve) => window.addEventListener("load", resolve)),
       document.fonts.ready,
+      new Promise((resolve) => {
+        const video = document.querySelector("video");
+
+        if (video.readyState >= 4) {
+          resolve();
+        } else {
+          video.addEventListener("canplaythrough", resolve, { once: true });
+        }
+      }),
     ]).then(() => {
       const loader = document.getElementById("loading-screen");
       loader.classList.add("fade-out");
