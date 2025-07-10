@@ -1,3 +1,29 @@
+@font-face {
+  font-family: "vitro pride";
+  src: url("./fonts/VITRO PRIDE OTF.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: black;
+  font-family: "vitro pride", sans-serif;
+  color: white;
+  overflow: hidden;
+  z-index: -100;
+}
+
+/******************************* loading screen *******************************/
 #loading-screen {
   position: fixed;
   inset: 0;
@@ -16,7 +42,9 @@
   pointer-events: none;
 }
 
-main {
+/************************************ Main ************************************/
+#main-page {
+  position: absolute;
   display: flex;
   align-items: center;
   width: 100vw;
@@ -433,11 +461,12 @@ footer {
   font-size: 0.75em;
 }
 
-/*** links ***/
+/************************************ Links ***********************************/
 .link-container {
   position: absolute;
   right: 2vw;
   top: 2vh;
+  z-index: 10;
 }
 
 .link-background {
@@ -457,4 +486,32 @@ footer {
   font-weight: 700;
   text-align: right;
   cursor: pointer;
+}
+
+/******************************** page global *********************************/
+.page {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0px);
+  background-color: rgba(0, 0, 0, 0);
+  transition: backdrop-filter 0.5s ease, background-color 0.5s ease;
+}
+
+.page.active {
+  backdrop-filter: blur(60px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/******************************** Introduction ********************************/
+#introduction-page {
+}
+
+/********************************** Artists ***********************************/
+#artists-page {
+}
+
+/************************************ View ************************************/
+#view-page {
 }
