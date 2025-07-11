@@ -411,7 +411,6 @@ body {
 }
 
 .video {
-  overflow: hidden;
   height: 100vh;
 }
 
@@ -494,18 +493,76 @@ footer {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  opacity: 0;
   backdrop-filter: blur(0px);
   background-color: rgba(0, 0, 0, 0);
-  transition: backdrop-filter 0.5s ease, background-color 0.5s ease;
+  transition: backdrop-filter 0.5s ease, background-color 0.5s ease,
+    opacity 0.5s ease;
 }
 
 .page.active {
   backdrop-filter: blur(60px);
   background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
 }
 
 /******************************** Introduction ********************************/
 #introduction-page {
+}
+
+.description-section {
+  width: 100vw;
+  height: 100vh;
+  padding: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.description-paragraph-part {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.description-paragraph {
+  font-size: 1.25em;
+  line-height: 1.6em;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 1s ease forwards;
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.description-paragraph:nth-child(1) {
+  animation-delay: 0s;
+}
+.description-paragraph:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.description-paragraph:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.description-image-part {
+  height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 1s ease forwards;
+}
+
+.description-image {
+  height: 100%;
 }
 
 /********************************** Artists ***********************************/
