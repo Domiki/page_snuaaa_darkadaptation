@@ -11,6 +11,12 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 480px) {
+  * {
+    font-size: 2vh;
+  }
+}
+
 html,
 body {
   position: relative;
@@ -23,6 +29,10 @@ body {
   z-index: -100;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
 /******************************* loading screen *******************************/
 #loading-screen {
   position: fixed;
@@ -45,6 +55,8 @@ body {
 /************************************ Main ************************************/
 #main-page {
   position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   width: 100vw;
@@ -487,6 +499,27 @@ footer {
   cursor: pointer;
 }
 
+@media (max-width: 680px) {
+  .link-container {
+    top: 1vh;
+    right: 0;
+    width: 100%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .link-background {
+    width: 100%;
+    height: 1vh;
+    right: 0;
+  }
+
+  .link-item {
+    font-size: 1em;
+  }
+}
+
 /******************************** page global *********************************/
 .page {
   display: none;
@@ -497,9 +530,8 @@ footer {
   backdrop-filter: blur(0px);
   background-color: rgba(0, 0, 0, 0);
   transition: backdrop-filter 0.5s ease, background-color 0.5s ease,
-    opacity 0.5s ease;
+    opacity 0.5s ease, transform 1s ease;
 }
-
 .page.active {
   backdrop-filter: blur(60px);
   background-color: rgba(0, 0, 0, 0.5);
@@ -508,14 +540,18 @@ footer {
 
 /******************************** Introduction ********************************/
 #introduction-page {
+  width: 100vw;
+  height: 200vh;
 }
 
 .description-section {
   width: 100vw;
   height: 100vh;
-  padding: 10%;
+  padding: 10vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
 .description-paragraph-part {
@@ -523,7 +559,7 @@ footer {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .description-paragraph {
@@ -535,6 +571,27 @@ footer {
   opacity: 0;
   transform: translateY(20px);
   animation: fade-up 1s ease forwards;
+}
+
+@media (max-width: 480px) {
+  .description-paragraph {
+    font-size: 1em;
+    line-height: 1.2em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .description-paragraph-part {
+    width: 100%;
+  }
+
+  .description-section {
+    padding: 20% 5%;
+  }
+
+  .description-image {
+    display: none;
+  }
 }
 
 @keyframes fade-up {
@@ -563,6 +620,86 @@ footer {
 
 .description-image {
   height: 100%;
+}
+
+.info-section {
+  width: 100vw;
+  height: 100vh;
+  padding: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reference-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reference-list {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.reference-item {
+  width: 400px;
+  aspect-ratio: 4 / 3;
+  padding: 1em;
+  background-color: rgba(100, 100, 100, 0.5);
+  border-radius: 1em;
+  box-shadow: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+.reference-item p {
+  width: 100%;
+  text-align: center;
+}
+
+.reference-item-news {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+.reference-item-news .img-container img {
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.reference-item-news img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.reference-item-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.history-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.reference-header,
+.history-header {
+  font-size: 1.5em;
+  font-weight: 700;
 }
 
 /********************************** Artists ***********************************/

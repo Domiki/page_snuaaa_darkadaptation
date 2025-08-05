@@ -20,6 +20,25 @@ Promise.all([
   }, 1000);
 });
 
+// scroll
+const page = document.getElementById("introduction-page");
+const sections = page.querySelectorAll(":scope > div");
+let currentIndex = 0;
+let isAnimating = false;
+
+function moveTo(index) {
+  if (index < 0 || index >= sections.length || isAnimating) return;
+  isAnimating = true;
+  page.style.transform = `translateY(-${index * 100}vh)`;
+  setTimeout(() => (isAnimating = false), 500);
+  currentIndex = index;
+}
+
+window.addEventListener("wheel", (e) => {
+  if (e.deltaY > 0) moveTo(currentIndex + 1);
+  else moveTo(currentIndex - 1);
+});
+
 // buttons
 const introductionButton = document.getElementById("introduction-button");
 const artistsButton = document.getElementById("artists-button");
@@ -42,6 +61,7 @@ function enablePage(page) {
 function disablePage(page) {
   page.classList.remove("active");
   page.style.zIndex = 0;
+  page.style.transform = "translateY(0vh)";
   setTimeout(() => {
     page.style.display = "none";
   }, 500);
