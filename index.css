@@ -679,6 +679,59 @@ nav button:hover {
   word-break: break-all;
 }
 
+/* Artists Page Specific Styles */
+.role-list-section .card-content p {
+  margin-bottom: 0.5rem;
+}
+.role-list-section .card-content strong {
+  display: inline-block;
+  width: 120px;
+  margin-right: 1rem;
+}
+
+.profile-cards-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.profile-card {
+  background-color: rgba(50, 50, 50, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-card-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  background-color: #333;
+}
+
+.profile-card-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.profile-card-role {
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+}
+
+.profile-card-bio {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /* ------------------------- */
 /* --- RESPONSIVE DESIGN --- */
 /* ------------------------- */
