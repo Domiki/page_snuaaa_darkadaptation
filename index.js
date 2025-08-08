@@ -1,114 +1,111 @@
-// loading sceen
-Promise.all([
-  new Promise((resolve) => window.addEventListener("load", resolve)),
-  document.fonts.ready,
-  new Promise((resolve) => {
-    const video = document.querySelector("video");
+document.addEventListener("DOMContentLoaded", () => {
+  // --- 로딩 스크린 관리 ---
+  const videoElement = document.querySelector(".video");
+  const assetPromises = [
+    new Promise((resolve) => window.addEventListener("load", resolve)),
+    document.fonts.ready,
+  ];
 
-    if (video.readyState >= 4) {
-      resolve();
-    } else {
-      video.addEventListener("canplaythrough", resolve, { once: true });
+  if (videoElement) {
+    assetPromises.push(
+      new Promise((resolve) => {
+        if (videoElement.readyState >= 4) {
+          // HAVE_ENOUGH_DATA
+          resolve();
+        } else {
+          videoElement.addEventListener("canplaythrough", resolve, {
+            once: true,
+          });
+        }
+      })
+    );
+  }
+
+  Promise.all(assetPromises).then(() => {
+    const loader = document.getElementById("loading-screen");
+    loader.classList.add("fade-out");
+    // 애니메이션 종료 후 display: none 처리하여 상호작용이 가능하도록 함
+    loader.addEventListener(
+      "transitionend",
+      () => {
+        loader.style.display = "none";
+      },
+      { once: true }
+    );
+  });
+
+  // --- 페이지 전환 관리 ---
+  const navButtons = document.querySelectorAll("nav button");
+  const closeButton = document.getElementById("close-page-button");
+  const pages = document.querySelectorAll(".page");
+  let activePage = null;
+  let isTransitioning = false;
+
+  // 페이지를 보여주거나 숨기는 함수
+  const setPageVisibility = (pageId) => {
+    if (isTransitioning) return;
+
+    const targetPage = document.getElementById(pageId);
+
+    // 이미 활성화된 페이지를 다시 클릭하면 닫기
+    if (activePage === targetPage) {
+      closeActivePage();
+      return;
     }
-  }),
-]).then(() => {
-  const loader = document.getElementById("loading-screen");
-  loader.classList.add("fade-out");
 
-  setTimeout(() => {
-    loader.style.display = "none";
-  }, 1000);
-});
+    isTransitioning = true;
 
-// scroll
-const page = document.getElementById("introduction-page");
-const sections = page.querySelectorAll(":scope > div");
-let currentIndex = 0;
-let isAnimating = false;
+    // 이전에 열려있던 페이지 닫기
+    if (activePage) {
+      activePage.classList.remove("active");
+    }
 
-function moveTo(index) {
-  if (index < 0 || index >= sections.length || isAnimating) return;
-  isAnimating = true;
-  page.style.transform = `translateY(-${index * 100}vh)`;
-  setTimeout(() => (isAnimating = false), 500);
-  currentIndex = index;
-}
+    // 새 페이지 열기
+    if (targetPage) {
+      activePage = targetPage;
+      activePage.classList.add("active");
+      activePage.scrollTop = 0; // 스크롤 위치 초기화
+      closeButton.classList.add("visible"); // 닫기 버튼 보이기
+    } else {
+      activePage = null;
+      closeButton.classList.remove("visible"); // 닫기 버튼 숨기기
+    }
 
-window.addEventListener("wheel", (e) => {
-  if (e.deltaY > 0) moveTo(currentIndex + 1);
-  else moveTo(currentIndex - 1);
-});
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 500); // CSS transition 시간과 일치
+  };
 
-// buttons
-const introductionButton = document.getElementById("introduction-button");
-const artistsButton = document.getElementById("artists-button");
-const viewButton = document.getElementById("view-button");
-const introductionPage = document.getElementById("introduction-page");
-const artistsPage = document.getElementById("artists-page");
-const viewPage = document.getElementById("view-page");
+  // 열려있는 페이지를 닫는 함수
+  const closeActivePage = () => {
+    if (activePage && !isTransitioning) {
+      isTransitioning = true;
+      activePage.classList.remove("active");
+      closeButton.classList.remove("visible"); // 닫기 버튼 숨기기
+      activePage = null;
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 500);
+    }
+  };
 
-transitioning = false;
-mode = 0;
+  // 닫기 버튼 이벤트 리스너
+  closeButton.addEventListener("click", () => {
+    closeActivePage();
+  });
 
-function enablePage(page) {
-  page.style.display = "block";
-  page.style.zIndex = 1;
-  setTimeout(() => {
-    page.classList.add("active");
-  }, 0);
-}
+  // 네비게이션 버튼 이벤트 리스너
+  navButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const pageId = button.dataset.page;
+      setPageVisibility(pageId);
+    });
+  });
 
-function disablePage(page) {
-  page.classList.remove("active");
-  page.style.zIndex = 0;
-  page.style.transform = "translateY(0vh)";
-  setTimeout(() => {
-    page.style.display = "none";
-  }, 500);
-}
-
-function setPage(newMode) {
-  if (newMode == mode) return;
-  if (transitioning) return;
-
-  transitioning = true;
-  mode = newMode;
-  if (mode == 0) {
-    disablePage(introductionPage);
-    disablePage(artistsPage);
-    disablePage(viewPage);
-  } else if (mode == 1) {
-    enablePage(introductionPage);
-    disablePage(artistsPage);
-    disablePage(viewPage);
-  } else if (mode == 2) {
-    disablePage(introductionPage);
-    enablePage(artistsPage);
-    disablePage(viewPage);
-  } else if (mode == 3) {
-    disablePage(introductionPage);
-    disablePage(artistsPage);
-    enablePage(viewPage);
-  }
-  setTimeout(() => {
-    transitioning = false;
-  }, 500);
-}
-
-introductionButton.addEventListener("click", () => {
-  setPage(1);
-});
-
-artistsButton.addEventListener("click", () => {
-  setPage(2);
-});
-
-viewButton.addEventListener("click", () => {
-  setPage(3);
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    setPage(0);
-  }
+  // ESC 키로 페이지 닫기
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeActivePage();
+    }
+  });
 });

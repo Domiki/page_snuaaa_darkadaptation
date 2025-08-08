@@ -3,183 +3,271 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>암적응 전시</title>
+    <title>서울대학교 아마추어천문회 - 암적응</title>
     <link rel="stylesheet" href="index.css" />
   </head>
+
   <body>
-    <div id="loading-screen">loading . . .</div>
-    <main id="main-page">
-      <div class="poster-container">
-        <div class="poster-shaper">
-          <div class="background-container">
-            <div class="background-inner">
-              <img class="background-image" src="assets/imgs/background.jpg" />
-              <img class="background-flare1" src="assets/imgs/flare1.png" />
-              <img class="background-flare2" src="assets/imgs/flare2.png" />
-              <img class="background-wing" src="assets/imgs/wing.png" />
-              <img class="background-wing2" src="assets/imgs/wing.png" />
-              <div class="background-bar">
-                <div class="background-bargauge"></div>
+    <div class="site-container">
+      <!-- 로딩 스크린 -->
+      <div id="loading-screen">loading . . .</div>
+
+      <!-- 메인 페이지 (포스터 & 비디오) -->
+      <main id="main-page">
+        <div class="poster-container">
+          <div class="poster-shaper">
+            <div class="background-container">
+              <div class="background-inner">
+                <img
+                  class="background-image"
+                  src="assets/imgs/background.jpg"
+                  alt=""
+                />
+                <img
+                  class="background-flare1"
+                  src="assets/imgs/flare1.png"
+                  alt=""
+                />
+                <img
+                  class="background-flare2"
+                  src="assets/imgs/flare2.png"
+                  alt=""
+                />
+                <img
+                  class="background-wing"
+                  src="assets/imgs/wing.png"
+                  alt=""
+                />
+                <img
+                  class="background-wing2"
+                  src="assets/imgs/wing.png"
+                  alt=""
+                />
+                <div class="background-bar">
+                  <div class="background-bargauge"></div>
+                </div>
+              </div>
+              <img
+                class="background-border"
+                src="assets/imgs/background_border.svg"
+                alt=""
+              />
+            </div>
+            <div class="title-container">
+              <img class="title" src="assets/imgs/title.png" alt="" />
+              <div class="title-line-horizontal dashed-line"></div>
+              <div class="title-line-vertical"></div>
+              <div class="title-plus-symbol">+</div>
+              <img
+                class="title-hanja"
+                src="assets/imgs/title_hanja.png"
+                alt=""
+              />
+            </div>
+            <div class="text-container">
+              <img class="text" src="assets/imgs/blurredtext.png" alt="" />
+              <div class="text-line-horizontal"></div>
+              <div class="text-line-vertical"></div>
+              <div class="text-plus-symbol">+</div>
+            </div>
+            <div class="circle-container">
+              <div class="circle-line"></div>
+              <img class="circle-camera" src="assets/imgs/camera.png" alt="" />
+            </div>
+            <div class="galaxy-container">
+              <div class="galaxy-item">
+                <img
+                  class="galaxy-image"
+                  src="assets/imgs/galaxy1.png"
+                  alt=""
+                />
+              </div>
+              <div class="galaxy-item">
+                <img
+                  class="galaxy-image"
+                  src="assets/imgs/galaxy2.png"
+                  alt=""
+                />
+              </div>
+              <div class="galaxy-item">
+                <img
+                  class="galaxy-image"
+                  src="assets/imgs/galaxy3.png"
+                  alt=""
+                />
+              </div>
+              <div class="galaxy-item">
+                <img
+                  class="galaxy-image"
+                  src="assets/imgs/galaxy4.png"
+                  alt=""
+                />
               </div>
             </div>
-            <img
-              class="background-border"
-              src="assets/imgs/background_border.svg"
-            />
-          </div>
-          <div class="title-container">
-            <img class="title" src="assets/imgs/title.png" />
-            <div class="title-line-horizontal dashed-line"></div>
-            <div class="title-line-vertical dashed-line"></div>
-            <div class="title-plus-symbol">+</div>
-            <img class="title-hanja" src="assets/imgs/title_hanja.png" />
-          </div>
-          <div class="text-container">
-            <img class="text" src="assets/imgs/blurredtext.png" />
-            <div class="text-line-horizontal dashed-line"></div>
-            <div class="text-line-vertical dashed-line"></div>
-            <div class="text-plus-symbol">+</div>
-          </div>
-          <div class="circle-container">
-            <div class="circle-line"></div>
-            <img class="circle-camera" src="assets/imgs/camera.png" />
-          </div>
-          <div class="galaxy-container">
-            <div class="galaxy-item">
-              <img class="galaxy-image" src="assets/imgs/galaxy1.png" />
-            </div>
-            <div class="galaxy-item">
-              <img class="galaxy-image" src="assets/imgs/galaxy2.png" />
-            </div>
-            <div class="galaxy-item">
-              <img class="galaxy-image" src="assets/imgs/galaxy3.png" />
-            </div>
-            <div class="galaxy-item">
-              <img class="galaxy-image" src="assets/imgs/galaxy4.png" />
-            </div>
           </div>
         </div>
-      </div>
-      <div class="video-container">
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          class="video"
-          src="assets/videos/main.mp4"
-        ></video>
-        <div class="video-fade"></div>
-      </div>
-    </main>
-    <footer>
-      <img class="logo_snuaaa" src="assets/imgs/logo_snuaaa.png" />
-      <img class="logo_ica" src="assets/imgs/logo_ica.png" />
-      <div class="footer-line dashed-line"></div>
-      <div class="footer-text">서울대학교 아마추어 천문회 AAA</div>
-    </footer>
-    <main id="introduction-page" class="page">
-      <div class="description-section">
-        <div class="description-paragraph-part">
-          <div class="description-paragraph">
-            칠흑 같이 어두운 장소에서 별을 바라 본 적이 있나요? 무엇이 있을지
-            모르는 깜깜한 공간 속에서, 하늘에 펼쳐진 별들은 더욱 강렬하게 빛을
-            뿜어냅니다. 이름도 모를 별을 헤아려 갈수록 한때 낯설던 공간은 점차
-            친숙해져 가고, 우리는 그곳에 적응하게 됩니다.
-          </div>
-          <div class="description-paragraph">
-            전시 &lt;암적응&gt;은 이러한 경험을 가진 아마추어천문회 동아리원들의
-            내적 변화 과정을 파워플랜트 공간 안에서 오브제를 통해 실체화합니다.
-            관람객들은 제공된 손전등 하나를 들고 암전된 파워플랜트 내부를
-            바닥부터 천장까지 비추며 탐험하게 됩니다. 오브제들은 손전등에서 뻗어
-            나오는 빛의 흐름을 자기만의 방식대로 표출하며, 그 모습은 흡사 하늘을
-            수놓은 별들을 연상케 합니다. 우주를 분석하는 천체과학자처럼,
-            여러분들은 오브제가 담고자 하는 메세지를 탐색하며 파워플랜트라는
-            공간에 점차 적응해 나가게 될 겁니다.
-          </div>
-          <div class="description-paragraph">
-            처음에는 아무것도 모르는 깜깜한 공간이겠지만, 발걸음을 내딛고 끝없는
-            호기심과 탐험을 통해 각자만의 특별한 변화와 경험을 만들어 가시길
-            바랍니다.
-          </div>
+
+        <div class="video-container">
+          <video
+            src="assets/videos/main.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            class="video"
+          ></video>
+          <div class="video-fade"></div>
         </div>
-        <div class="description-image-part">
-          <img
-            class="description-image"
-            src="assets/imgs/description_image.jpg"
-          />
-        </div>
-      </div>
-      <div class="info-section">
-        <div class="reference-section">
-          <h class="reference-header">보도자료</h>
-          <div class="reference-list">
-            <div class="reference-item">
-              <a
-                class="reference-item-news"
-                href="https://www.snu.ac.kr/snunow/snu_story?md=v&bbsidx=154121"
-                target="_blank"
-              >
-                <div class="img-container">
-                  <img src="assets/imgs/news.png" />
+      </main>
+
+      <!-- 페이지 이동 버튼 (NAV) -->
+      <nav>
+        <button data-page="introduction-page">Introduction</button>
+        <button data-page="artists-page">Artists</button>
+        <button data-page="view-page">View</button>
+      </nav>
+
+      <!-- 오버레이 페이지들 -->
+      <button
+        id="close-page-button"
+        class="close-page-btn"
+        aria-label="페이지 닫기"
+      >
+        &times;
+      </button>
+
+      <section id="introduction-page" class="page">
+        <div class="page-content">
+          <div class="description-section">
+            <div class="description-paragraph-part">
+              <div class="description-paragraph">
+                칠흑 같이 어두운 장소에서 별을 바라 본 적이 있나요? 무엇이
+                있을지 모르는 깜깜한 공간 속에서, 하늘에 펼쳐진 별들은 더욱
+                강렬하게 빛을 뿜어냅니다. 이름도 모를 별을 헤아려 갈수록 한때
+                낯설던 공간은 점차 친숙해져 가고, 우리는 그곳에 적응하게 됩니다.
+              </div>
+              <div class="description-paragraph">
+                전시 &lt;암적응&gt;은 이러한 경험을 가진 아마추어천문회
+                동아리원들의 내적 변화 과정을 파워플랜트 공간 안에서 오브제를
+                통해 실체화합니다. 관람객들은 제공된 손전등 하나를 들고 암전된
+                파워플랜트 내부를 바닥부터 천장까지 비추며 탐험하게 됩니다.
+                오브제들은 손전등에서 뻗어 나오는 빛의 흐름을 자기만의 방식대로
+                표출하며, 그 모습은 흡사 하늘을 수놓은 별들을 연상케 합니다.
+                우주를 분석하는 천체과학자처럼, 여러분들은 오브제가 담고자 하는
+                메세지를 탐색하며 파워플랜트라는 공간에 점차 적응해 나가게 될
+                겁니다.
+              </div>
+              <div class="description-paragraph">
+                처음에는 아무것도 모르는 깜깜한 공간이겠지만, 발걸음을 내딛고
+                끝없는 호기심과 탐험을 통해 각자만의 특별한 변화와 경험을 만들어
+                가시길 바랍니다.
+              </div>
+            </div>
+            <div class="description-image-part">
+              <img
+                class="description-image"
+                src="assets/imgs/description_image.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div class="info-section">
+            <div class="reference-section">
+              <h2 class="section-header">보도자료</h2>
+              <div class="reference-list">
+                <div class="reference-item">
+                  <a
+                    class="reference-item-news"
+                    href="https://www.snu.ac.kr/snunow/snu_story?md=v&bbsidx=154121"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div class="img-container">
+                      <img src="assets/imgs/news.png" alt="" />
+                    </div>
+                    <p>서울대뉴스 - 어둠 속에서 답을 찾다, 암적응(暗適應)</p>
+                  </a>
                 </div>
-                <p>서울대뉴스 - 어둠 속에서 답을 찾다, 암적응(暗適應)</p>
-              </a>
+                <div class="reference-item">
+                  <iframe
+                    class="reference-item-video"
+                    src="https://www.youtube.com/embed/zt7sjXEhxyk?si=zoLjtZ93aV1Kbs2h"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                  ></iframe>
+                  <p>파워플랜트 인터뷰</p>
+                </div>
+              </div>
             </div>
-            <div class="reference-item">
-              <iframe
-                class="reference-item-video"
-                src="https://www.youtube.com/embed/zt7sjXEhxyk?si=zoLjtZ93aV1Kbs2h"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-              <p>파워플랜트 인터뷰</p>
+            <div class="history-section">
+              <h2 class="section-header">전시 이력</h2>
+              <div class="history-list">
+                <div class="history-item">
+                  2025.4.4.(금) ~ 2025.4.7.(월) 12:00-20:00: 서울대학교
+                  파워플랜트 student-up 프로그램 당선
+                </div>
+                <div class="history-item">...</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="history-section">
-          <h class="history-header">전시 이력</h>
-          <div class="history-list">
-            <div class="history-item">
-              2025.4.4.(금) ~ 2025.4.7.(월) 12:00-20:00: 서울대학교 파워플랜트
-              student-up 프로그램 당선
-            </div>
-            <div class="history-item">...</div>
+      </section>
+
+      <section id="artists-page" class="page">
+        <div class="page-content">
+          <div class="card-content">
+            총괄: 안도혁 <br />
+            홍보 및 디자인: 김도은 오지형 장서영 <br />
+            기획 및 제작: 김도은 김선우 김주호 김태석 김희서 박서진 서윤지
+            송치호 신윤도 심현진 안도혁 오지형 윤지용 이서영 이아현 장서영
+            <br />
+            음향: 김보민 <br />
+            자문: 최시환 <br />
+            나레이션: 김세훈
           </div>
         </div>
-      </div>
-    </main>
-    <main id="artists-page" class="page">
-      <div class="artists-card">
-        총괄: 안도혁 홍보 및 디자인: 김도은 오지형 장서영 기획 및 제작: 김도은
-        김선우 김주호 김태석 김희서 박서진 서윤지 송치호 신윤도 심현진 안도혁
-        오지형 윤지용 이서영 이아현 장서영 음향: 김보민 자문: 최시환 나레이션:
-        김세훈
-      </div>
-    </main>
-    <main id="view-page" class="page">
-      <div class="view-card">
-        <div>
-          작품목록: [전시] 김선우 <무제_바위> [전시] 장서영 &lt;스타캐쳐 (Star
-          Catcher)> [전시] 김도은 &lt;다중우주대폭발원점모뉴먼트>
-          <흑색왜성-원시별 역행> [전시] 서윤지 &lt;Contraband Cosmos> [전시]
-          김주호 &lt;우주 회전초> <라니아케아> <태양의 소리> [전시] 오지형
-          &lt;회전축아니마> [전시] 박서진 &lt;중성자별폭발모뉴멘트>
-          <중력렌즈시뮬레이터> [전시] 송치호, 심현진 <포텐티아 스테이션> [전시]
-          이서영 &lt;스페로 스페라(Spero Spera)> [전시] 이아현 &lt;우주 배경
-          고동> [전시] 김태석, 김희서, 신윤도, 윤지용 <유성(有星)>
-          https://captionmaps-git-main-studioparkjiho.vercel.app/AAA
+      </section>
+
+      <section id="view-page" class="page">
+        <div class="page-content">
+          <div class="card-content">
+            <strong>작품목록:</strong><br />
+            [전시] 김선우 &lt;무제_바위&gt;<br />
+            [전시] 장서영 &lt;스타캐쳐 (Star Catcher)&gt;<br />
+            [전시] 김도은 &lt;다중우주대폭발원점모뉴먼트&gt; &lt;흑색왜성-원시별
+            역행&gt;<br />
+            [전시] 서윤지 &lt;Contraband Cosmos&gt;<br />
+            [전시] 김주호 &lt;우주 회전초&gt; &lt;라니아케아&gt; &lt;태양의
+            소리&gt;<br />
+            [전시] 오지형 &lt;회전축아니마&gt;<br />
+            [전시] 박서진 &lt;중성자별폭발모뉴멘트&gt;
+            &lt;중력렌즈시뮬레이터&gt;<br />
+            [전시] 송치호, 심현진 &lt;포텐티아 스테이션&gt;<br />
+            [전시] 이서영 &lt;스페로 스페라(Spero Spera)&gt;<br />
+            [전시] 이아현 &lt;우주 배경 고동&gt;<br />
+            [전시] 김태석, 김희서, 신윤도, 윤지용 &lt;유성(有星)&gt;<br /><br />
+            <a
+              href="https://captionmaps-git-main-studioparkjiho.vercel.app/AAA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://captionmaps-git-main-studioparkjiho.vercel.app/AAA
+            </a>
+          </div>
         </div>
-      </div>
-    </main>
-    <div class="link-container">
-      <div class="link-background"></div>
-      <div id="introduction-button" class="link-item">Introduction</div>
-      <div id="artists-button" class="link-item">Artists</div>
-      <div id="view-button" class="link-item">View</div>
+      </section>
+
+      <!-- 푸터 -->
+      <footer>
+        <!-- 실제 로고 경로로 수정 필요 -->
+        <img class="logo_snuaaa" src="assets/imgs/logo_snuaaa.png" alt="" />
+        <img class="logo_ica" src="assets/imgs/logo_ica.png" alt="" />
+        <div class="footer-line dashed-line"></div>
+        <div class="footer-text">서울대학교 아마추어 천문회 AAA</div>
+      </footer>
     </div>
   </body>
   <script type="text/javascript" src="index.js"></script>
