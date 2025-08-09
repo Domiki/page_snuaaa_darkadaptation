@@ -877,10 +877,6 @@ nav button:hover {
 
 /* Tablet & Smaller Desktops */
 @media (max-width: 1024px) {
-  .video-container {
-    left: 50%;
-    width: 50%;
-  }
   .video-fade {
     background: linear-gradient(
       to right,
@@ -913,9 +909,6 @@ nav button:hover {
 
 /* Mobile */
 @media (max-width: 768px) {
-  /* .video-container {
-    display: none;
-  } */
   .poster-container {
     justify-content: center;
   }
