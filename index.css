@@ -913,9 +913,9 @@ nav button:hover {
 
 /* Mobile */
 @media (max-width: 768px) {
-  .video-container {
+  /* .video-container {
     display: none;
-  }
+  } */
   .poster-container {
     justify-content: center;
   }
