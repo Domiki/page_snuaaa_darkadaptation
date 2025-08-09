@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     assetPromises.push(
       new Promise((resolve) => {
         if (videoElement.readyState >= 4) {
-          // HAVE_ENOUGH_DATA
           resolve();
         } else {
           videoElement.addEventListener("canplaythrough", resolve, {
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   Promise.all(assetPromises).then(() => {
     const loader = document.getElementById("loading-screen");
     loader.classList.add("fade-out");
-    // 애니메이션 종료 후 display: none 처리하여 상호작용이 가능하도록 함
     loader.addEventListener(
       "transitionend",
       () => {
@@ -41,47 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
   let activePage = null;
   let isTransitioning = false;
 
-  // 페이지를 보여주거나 숨기는 함수
   const setPageVisibility = (pageId) => {
     if (isTransitioning) return;
-
     const targetPage = document.getElementById(pageId);
-
-    // 이미 활성화된 페이지를 다시 클릭하면 닫기
     if (activePage === targetPage) {
       closeActivePage();
       return;
     }
-
     isTransitioning = true;
-
-    // 이전에 열려있던 페이지 닫기
     if (activePage) {
       activePage.classList.remove("active");
     }
-
-    // 새 페이지 열기
     if (targetPage) {
       activePage = targetPage;
       activePage.classList.add("active");
-      activePage.scrollTop = 0; // 스크롤 위치 초기화
-      closeButton.classList.add("visible"); // 닫기 버튼 보이기
+      closeButton.classList.add("visible");
+      activePage.scrollTop = 0;
     } else {
       activePage = null;
-      closeButton.classList.remove("visible"); // 닫기 버튼 숨기기
     }
-
     setTimeout(() => {
       isTransitioning = false;
-    }, 500); // CSS transition 시간과 일치
+    }, 500);
   };
 
-  // 열려있는 페이지를 닫는 함수
   const closeActivePage = () => {
     if (activePage && !isTransitioning) {
       isTransitioning = true;
       activePage.classList.remove("active");
-      closeButton.classList.remove("visible"); // 닫기 버튼 숨기기
+      closeButton.classList.remove("visible");
       activePage = null;
       setTimeout(() => {
         isTransitioning = false;
@@ -89,23 +75,110 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // 닫기 버튼 이벤트 리스너
-  closeButton.addEventListener("click", () => {
-    closeActivePage();
-  });
-
-  // 네비게이션 버튼 이벤트 리스너
   navButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const pageId = button.dataset.page;
-      setPageVisibility(pageId);
+      setPageVisibility(button.dataset.page);
     });
   });
 
-  // ESC 키로 페이지 닫기
+  closeButton.addEventListener("click", closeActivePage);
+
+  // --- View 페이지 기능 ---
+  // 1. 이미지 갤러리
+  const galleries = document.querySelectorAll(".artwork-gallery");
+  galleries.forEach((gallery) => {
+    const mainImage = gallery.querySelector(".main-image-container img");
+    const thumbnails = gallery.querySelectorAll(".thumbnail-container img");
+
+    thumbnails.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        mainImage.src = thumb.src;
+        thumbnails.forEach((t) => t.classList.remove("active"));
+        thumb.classList.add("active");
+      });
+    });
+  });
+
+  // 2. 전체화면 이미지 모달
+  const modal = document.getElementById("fullscreen-modal");
+  const modalImage = modal.querySelector("img");
+  const closeModalBtn = modal.querySelector(".close-modal-btn");
+
+  document.querySelectorAll(".main-image-container").forEach((container) => {
+    container.addEventListener("click", () => {
+      modalImage.src = container.querySelector("img").src;
+      modal.classList.add("visible");
+    });
+  });
+
+  const closeModal = () => modal.classList.remove("visible");
+  closeModalBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // 3. 커스텀 오디오 플레이어
+  document.querySelectorAll(".audio-player").forEach((player) => {
+    const audio = player.querySelector("audio");
+    const playPauseBtn = player.querySelector(".play-pause-btn");
+    const playIcon = player.querySelector(".play-icon");
+    const pauseIcon = player.querySelector(".pause-icon");
+    const progressBar = player.querySelector(".progress-bar");
+    const progressBarContainer = player.querySelector(
+      ".progress-bar-container"
+    );
+    const timeDisplay = player.querySelector(".time-display");
+
+    const formatTime = (seconds) => {
+      const minutes = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${minutes}:${secs.toString().padStart(2, "0")}`;
+    };
+
+    playPauseBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener("play", () => {
+      playIcon.style.display = "none";
+      pauseIcon.style.display = "block";
+    });
+
+    audio.addEventListener("pause", () => {
+      playIcon.style.display = "block";
+      pauseIcon.style.display = "none";
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = `${progress}%`;
+      const remainingTime = audio.duration - audio.currentTime;
+      timeDisplay.textContent = formatTime(remainingTime || 0);
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      timeDisplay.textContent = formatTime(audio.duration);
+    });
+
+    progressBarContainer.addEventListener("click", (e) => {
+      const barWidth = progressBarContainer.clientWidth;
+      const clickX = e.offsetX;
+      audio.currentTime = (clickX / barWidth) * audio.duration;
+    });
+  });
+
+  // --- ESC 키로 페이지 및 모달 닫기 ---
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      closeActivePage();
+      if (modal.classList.contains("visible")) {
+        closeModal();
+      } else {
+        closeActivePage();
+      }
     }
   });
 });
