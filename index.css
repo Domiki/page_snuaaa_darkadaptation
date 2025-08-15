@@ -128,7 +128,7 @@ img {
 .poster-shaper {
   position: relative;
   width: 100%;
-  max-width: 500px; /* 포스터 최대 너비 제한 */
+  max-width: 600px;
   aspect-ratio: 1 / 1.414;
 }
 
@@ -162,20 +162,18 @@ img {
 .background-image {
   position: absolute;
   object-fit: cover;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
+  top: -5%;
+  left: -5%;
   animation: background-image-move 10s ease-in-out infinite;
 }
 
 @keyframes background-image-move {
   0%,
   100% {
-    transform: translate(0, 0);
+    transform: scale(1.1) translate(0, 0);
   }
   50% {
-    transform: translate(5%, 5%);
+    transform: scale(1.1) translate(5%, 5%);
   }
 }
 
@@ -691,7 +689,7 @@ nav button:hover {
 
 .profile-cards-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
 }
 
@@ -721,12 +719,25 @@ nav button:hover {
   margin-bottom: 0.25rem;
 }
 
+.profile-card-major {
+  font-size: 1em;
+  margin-bottom: 0.25rem;
+  color: var(--color-primary-accent);
+}
+
+.profile-card-email {
+  font-size: 0.8em;
+  margin-bottom: 0.25rem;
+  color: var(--color-primary-accent);
+}
+
 .profile-card-role {
   color: var(--color-primary-accent);
   margin-bottom: 1rem;
 }
 
 .profile-card-bio {
+  margin-top: 1rem;
   font-size: 0.9em;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
