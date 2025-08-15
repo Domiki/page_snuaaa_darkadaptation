@@ -799,6 +799,11 @@ nav button:hover {
 }
 .artwork-details .artwork-creator {
   color: var(--color-primary-accent);
+  margin-bottom: 1.2rem;
+}
+.artwork-details .artwork-materials {
+  font-size: 0.8em;
+  color: var(--color-primary-accent);
   margin-bottom: 1.5rem;
 }
 .artwork-details .artwork-description {
