@@ -740,6 +740,9 @@ nav button:hover {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
 }
+.profile-card-bio a {
+  text-decoration: underline;
+}
 
 /* View Page Specific Styles */
 #artwork-nav-container {
