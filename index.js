@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 페이지 전환 관리 ---
   const navButtons = document.querySelectorAll("nav button");
   const closeButton = document.getElementById("close-page-button");
+  const scrollTopBtn = document.getElementById("scroll-to-top-btn");
   const pages = document.querySelectorAll(".page");
   let activePage = null;
   let isTransitioning = false;
@@ -50,11 +51,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (activePage) {
       activePage.classList.remove("active");
     }
+
+    scrollTopBtn.classList.remove("visible");
+
     if (targetPage) {
       activePage = targetPage;
       activePage.classList.add("active");
       closeButton.classList.add("visible");
       activePage.scrollTop = 0;
+
+      if (activePage.id === "view-page") {
+        scrollTopBtn.classList.add("visible");
+      }
     } else {
       activePage = null;
     }
@@ -68,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       isTransitioning = true;
       activePage.classList.remove("active");
       closeButton.classList.remove("visible");
+      scrollTopBtn.classList.remove("visible");
       activePage = null;
       setTimeout(() => {
         isTransitioning = false;
@@ -169,6 +178,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const clickX = e.offsetX;
       audio.currentTime = (clickX / barWidth) * audio.duration;
     });
+  });
+
+  // 4. 작품 내비게이션 스크롤
+  document
+    .querySelectorAll("#artwork-nav-container button")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.dataset.target;
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    });
+
+  // 5. 맨 위로 가기 버튼
+  scrollTopBtn.addEventListener("click", () => {
+    if (activePage) {
+      activePage.scrollTo({ top: 0, behavior: "smooth" });
+    }
   });
 
   // --- ESC 키로 페이지 및 모달 닫기 ---
