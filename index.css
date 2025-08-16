@@ -535,7 +535,7 @@ nav button:hover {
   gap: 4rem;
 }
 
-/* 페이지 닫기 버튼 스타일 */
+/* Page Close Button Styles */
 .close-page-btn {
   position: fixed;
   top: 2.5rem;
@@ -550,20 +550,15 @@ nav button:hover {
   z-index: 101;
   transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-
-  /* 기본적으로 숨김 처리 */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-
-/* 페이지가 활성화될 때 닫기 버튼을 보여주는 스타일 */
 .close-page-btn.visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
-
 .close-page-btn:hover {
   transform: scale(1.2);
 }
@@ -633,7 +628,7 @@ nav button:hover {
 
 .reference-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -675,6 +670,9 @@ nav button:hover {
 .card-content a {
   text-decoration: underline;
   word-break: break-all;
+}
+.card-content.center {
+  text-align: center;
 }
 
 /* Artists Page Specific Styles */
@@ -747,7 +745,6 @@ nav button:hover {
 #artwork-nav-container {
   padding: 1rem 5%;
   margin: 0 -5% 3rem;
-  backdrop-filter: blur(5px);
   z-index: 10;
   display: flex;
   flex-wrap: wrap;
@@ -1010,6 +1007,9 @@ nav button:hover {
   }
   .page {
     padding: 6rem 5% 4rem;
+  }
+  .profile-cards-section {
+    grid-template-columns: repeat(auto-fit, 100%);
   }
   .close-page-btn {
     top: auto;
